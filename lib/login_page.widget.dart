@@ -14,7 +14,7 @@ class Login extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const LoginWidget(title: 'Flutter Demo Home Page'),
+      home: const LoginWidget(title: 'Sign in'),
     );
   }
 }

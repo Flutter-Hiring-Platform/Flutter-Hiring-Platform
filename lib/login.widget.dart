@@ -15,7 +15,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Center(child: Text(widget.title)),
       ),
       body: Center(
         child: Column(

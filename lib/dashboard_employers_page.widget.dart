@@ -14,7 +14,7 @@ class DashboardEmployers extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const DashboardEmployersWidget(title: 'Flutter Demo Home Page'),
+      home: const DashboardEmployersWidget(title: 'Your job offers'),
     );
   }
 }
