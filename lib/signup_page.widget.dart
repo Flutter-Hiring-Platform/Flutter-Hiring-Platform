@@ -12,7 +12,7 @@ class Signup extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'LinkedIn',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
       home: const SignupWidget(title: 'Flutter Demo Home Page'),

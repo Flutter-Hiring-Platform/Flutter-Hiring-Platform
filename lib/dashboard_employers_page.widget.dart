@@ -11,7 +11,7 @@ class DashboardEmployers extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'LinkedIn',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
       home: const DashboardEmployersWidget(title: 'Flutter Demo Home Page'),
