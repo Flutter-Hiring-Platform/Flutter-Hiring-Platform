@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class LoginWidget extends StatefulWidget {
-  const LoginWidget({super.key, required this.title});
+class SignupWidget extends StatefulWidget {
+  const SignupWidget({super.key, required this.title});
   final String title;
 
   @override
-  State<LoginWidget> createState() => _LoginWidgetState();
+  State<SignupWidget> createState() => _LoginWidgetState();
 }
 
-class _LoginWidgetState extends State<LoginWidget> {
+class _LoginWidgetState extends State<SignupWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
