@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'job_widget.dart';
 import 'package:flutter/material.dart';
 
 class LoginWidget extends StatefulWidget {
@@ -54,6 +55,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                         onChanged: (str) {
                           print("$str");
                         }),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const JobWidget()));
+                        },
+                        child: const Text("JobList"))
                   ]),
             )
           ],
