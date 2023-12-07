@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'login.widget.dart';
+import 'addjob.widget.dart';
 
-class Login extends StatelessWidget {
-  const Login({super.key});
+class AddJob extends StatelessWidget {
+  const AddJob({super.key});
 
   // This widget is the root of your application.
   @override
@@ -13,7 +13,7 @@ class Login extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LoginWidget(title: 'Flutter Demo Home Page'),
+      home: const AddJobWidget(title: 'Flutter Demo Home Page'),
     );
   }
 }
