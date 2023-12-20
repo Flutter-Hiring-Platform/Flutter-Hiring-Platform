@@ -17,15 +17,16 @@ class JobWidget extends StatelessWidget {
           future: JobService.getJobs(),
           builder: (context, snapshot) {
             if (snapshot.hasError) { 
+              print('Snapshot error : ${snapshot}');
               return const Center(
                 child: Text("erreur de téléchargement"),
               );
             }
-            if (snapshot.hasData) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
+            // if (snapshot.hasData) {
+            //   return const Center(
+            //     child: CircularProgressIndicator(),
+            //   );
+            // }
             return JobListWidget(jobs: snapshot.data!);
           },
         ));
