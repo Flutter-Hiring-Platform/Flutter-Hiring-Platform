@@ -12,7 +12,7 @@ class JobListWidget extends StatelessWidget {
     return ListView.builder(
         itemCount: jobs.length,
         itemBuilder: (context, index) {
-          return JobCell(job:jobs[index]);
+          return JobCell(job: jobs[index]);
         });
   }
 }

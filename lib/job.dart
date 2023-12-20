@@ -1,13 +1,15 @@
-class Job{
+class Job {
   String title;
   String company;
   String description;
   String location;
+
   // String category;
   // String contractType;
   // String createDate;
 
   Job(this.title, this.company, this.description, this.location);
+
   // , this.description, this.location, this.category, this.contractType, this.createDate);
   // Job(this.title);
   // command + m for generate

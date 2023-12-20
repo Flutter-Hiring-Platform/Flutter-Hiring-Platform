@@ -6,6 +6,7 @@ class JobCell extends StatefulWidget {
   const JobCell({super.key, required this.job});
 
   final Job job;
+
   // final int type;
 
   @override
@@ -16,19 +17,19 @@ class _JobCellState extends State<JobCell> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height:40,
+      height: 40,
       // color: widget.type == 0 ? Colors.white : Colors.black12,
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Text(widget.job.title,
-            style: TextStyle(color: Colors.blueGrey )),
+            style: TextStyle(color: Colors.blueGrey)),
         Text(widget.job.company,
-            style: TextStyle(color: Colors.blueGrey )),
+            style: TextStyle(color: Colors.blueGrey)),
         Text(widget.job.description,
-            style: TextStyle(color: Colors.blueGrey )),
+            style: TextStyle(color: Colors.blueGrey)),
         Text(widget.job.location,
-            style: TextStyle(color: Colors.blueGrey )),
-                // color: widget.job.completed ? Colors.blueGrey : Colors.deepPurple)),
-               
+            style: TextStyle(color: Colors.blueGrey)),
+        // color: widget.job.completed ? Colors.blueGrey : Colors.deepPurple)),
+
         // if(!widget.job.completed)...[
         //   TextButton(onPressed: () {
         //     setState(() {
