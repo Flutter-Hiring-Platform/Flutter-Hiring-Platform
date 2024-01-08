@@ -19,15 +19,15 @@ class _JobCellState extends State<JobCell> {
     return Container(
       height: 40,
       // color: widget.type == 0 ? Colors.white : Colors.black12,
-      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      child: Row(children: [
         Text(widget.job.title,
             style: TextStyle(color: Colors.blueGrey)),
         Text(widget.job.company,
             style: TextStyle(color: Colors.blueGrey)),
-        Text(widget.job.description,
-            style: TextStyle(color: Colors.blueGrey)),
-        Text(widget.job.location,
-            style: TextStyle(color: Colors.blueGrey)),
+        // Text(widget.job.description,
+        //     style: TextStyle(color: Colors.blueGrey)),
+        // Text(widget.job.location,
+        //     style: TextStyle(color: Colors.blueGrey)),
         // color: widget.job.completed ? Colors.blueGrey : Colors.deepPurple)),
 
         // if(!widget.job.completed)...[
