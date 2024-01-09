@@ -25,11 +25,11 @@ class JobWidget extends StatelessWidget {
                 child: Text("erreur de téléchargement"),
               );
             }
-            // if (snapshot.hasData) {
-            //   return const Center(
-            //     child: CircularProgressIndicator(),
-            //   );
-            // }
+            if (snapshot.hasData) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
             return JobListWidget(jobs: snapshot.data!);
           },
         ));

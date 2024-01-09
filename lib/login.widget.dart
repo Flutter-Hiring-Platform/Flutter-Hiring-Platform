@@ -21,6 +21,17 @@ class _LoginWidgetState extends State<LoginWidget> {
             .colorScheme
             .inversePrimary,
         title: Text(widget.title),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const JobWidget()));
+            },
+            child: const Text("JobList")
+          )
+        ],
       ),
       body: Center(
         child: Column(
@@ -59,14 +70,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                         onChanged: (str) {
                           print("$str");
                         }),
-                    TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const JobWidget()));
-                        },
-                        child: const Text("JobList"))
+                    
                   ]),
             )
           ],
