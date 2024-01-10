@@ -25,6 +25,15 @@ app.get("/jobs", (req, res) => {
       res.status(400).send(error);
     });
 });
+app.get("/job/title/:title", (req, res) => {
+  Jobs.find({ title: req.params.title })
+    .then((job) => {
+      res.status(200).send(job);
+    })
+    .catch((error) => {
+      res.status(400).send(error);
+    });
+});
 
 app.post("/jobs", (req, res) => {
   const job = new Jobs(req.body);

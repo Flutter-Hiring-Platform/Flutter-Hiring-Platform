@@ -38,6 +38,7 @@ dependencies:
   postgres: ^3.0.3
   http: ^1.1.0
   material: ^1.0.0+2
+  fluttertoast: ^8.2.4
 
 dev_dependencies:
   flutter_test:

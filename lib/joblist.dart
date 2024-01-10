@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'work.dart';
+import 'job_detail.dart';
 
 class JobWidget extends StatefulWidget {
   const JobWidget({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class _JobWidgetState extends State<JobWidget> {
 
   Future<List<Work>> fetchWorks() async {
     final response = await http.get(
-      Uri.parse('http://localhost:3000/jobs'), // Replace with your API endpoint
+      Uri.parse('http://localhost:3000/jobs'),
     );
     if (response.statusCode == 201) {
       List<dynamic> jsonData = jsonDecode(response.body);
@@ -54,17 +55,15 @@ class _JobWidgetState extends State<JobWidget> {
                 return ListTile(
                   title: Text(snapshot.data![index].title),
                   subtitle: Text("Location: " + snapshot.data![index].company),
-                  trailing: TextButton(
-                    onPressed: () {
-                      // TODO: Perform action when "more" is pressed
-                      // For example, navigate to another screen
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => AnotherScreen()),
-                      // );
-                    },
-                    child: const Text('More +'),
-                  ),
+                  // trailing: TextButton(
+                  //     onPressed: () {
+                  //       Navigator.push(
+                  //           context,
+                  //           MaterialPageRoute(
+                  //               builder: (context) => const getWorkByTitle(snapshot.data![index].title)));
+                  //     },
+                  //     child: const Text('More'),
+                  // ),
                 );
               },
             );
