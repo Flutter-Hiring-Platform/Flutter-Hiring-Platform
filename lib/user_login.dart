@@ -3,8 +3,9 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'user.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'personalData.widget.dart';
 
-Future<User> userLogin(String username, String password) async {
+Future<User> userLogin(String username, String password, BuildContext context) async {
   final response = await http.get(
     Uri.parse('http://localhost:3000/username/$username'),
   );
@@ -12,6 +13,12 @@ Future<User> userLogin(String username, String password) async {
     final name = jsonDecode(response.body)['username'];
     final pwd = jsonDecode(response.body)['password'];
     if(name == username && password == pwd){
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => PersonalDataWidget(username: username),
+        ),
+      );
        Fluttertoast.showToast(
         msg: "Login Success",
         toastLength: Toast.LENGTH_SHORT,
