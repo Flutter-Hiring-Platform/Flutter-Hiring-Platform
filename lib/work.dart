@@ -30,7 +30,7 @@ class Work {
           company: company,
           contract_type: contract_type,
         ),
-      _ => throw const FormatException('Failed to load User.'),
+      _ => throw const FormatException('Failed to load job.'),
     };
   }
 }

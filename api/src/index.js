@@ -5,6 +5,7 @@ const Jobs = require("./models/jobs");
 var cors = require("cors");
 
 const app = express();
+
 app.use(cors());
 
 app.use(express.json());
@@ -26,8 +27,8 @@ app.get("/jobs", (req, res) => {
 });
 
 app.post("/jobs", (req, res) => {
-  const user = new Users(req.body);
-  user
+  const job = new Jobs(req.body);
+  job
     .save()
     .then((job) => {
       res.status(201).send(job);
