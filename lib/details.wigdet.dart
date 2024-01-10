@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:job_app/home_page.dart';
 
 class DetailWidget extends StatelessWidget {
   const DetailWidget({super.key, required this.title,
@@ -110,6 +111,12 @@ class DetailWidget extends StatelessWidget {
                           //Navigator.push(context, MaterialPageRoute(builder: (context) => TodoWidget()));
                         },
                         child: const Text("Apply"),
+                    ),
+                    TextButton(
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const MyHomePage(title: 'LinkedIn')));
+                        },
+                        child: const Text('Go to Home page')
                     ),
                   ]),
             )

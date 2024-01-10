@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:job_app/home_page.dart';
 
 class PersonalDataWidget extends StatelessWidget {
   const PersonalDataWidget({super.key, required this.userid,
@@ -47,7 +48,9 @@ class PersonalDataWidget extends StatelessWidget {
                       ],
                     ),
                     TextButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const MyHomePage(title: 'LinkedIn')));
+                        },
                         child: const Text('Go to Home page')
                     ),
 

@@ -85,22 +85,26 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [
-            //     const Text("Details",
-            //         style: TextStyle(fontSize: 24)),
-            //     TextButton(
-            //       onPressed: () {
-            //         Navigator.push(
-            //             context,
-            //             MaterialPageRoute(
-            //                 builder: (context) => const Detail()));
-            //       },
-            //       child: const Text('Details'),
-            //     ),
-            //   ],
-            // ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("Details",
+                    style: TextStyle(fontSize: 24)),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Detail(jobtitle: "error", description: "error",
+                              location: "error", typecontract: "error",
+                              min: "error", company: "error",
+                              max: "error",
+                            )));
+                  },
+                  child: const Text('Details'),
+                ),
+              ],
+            ),
           ],
         ),
       ),
