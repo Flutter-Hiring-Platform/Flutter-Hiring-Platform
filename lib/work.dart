@@ -1,4 +1,5 @@
 class Work {
+  final String id;
   final String title;
   final String description;
   final String location;
@@ -8,6 +9,7 @@ class Work {
   final String contract_type;
 
   const Work({
+    required this.id,
     required this.title,
     required this.description,
     required this.location,
@@ -19,6 +21,7 @@ class Work {
 
   factory Work.fromJson(Map<String, dynamic> json) {
     return Work(
+      id: json['_id'] ?? '',
       title: json['title'] ?? '',
       description: json['description'] ?? '',
       location: json['location'] ?? '',

@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'work.dart';
 import 'job_detail.dart';
+import 'job_detail.widget.dart';
 
 class JobWidget extends StatefulWidget {
   const JobWidget({Key? key}) : super(key: key);
@@ -27,6 +28,7 @@ class _JobWidgetState extends State<JobWidget> {
     if (response.statusCode == 201) {
       List<dynamic> jsonData = jsonDecode(response.body);
       List<Work> works = jsonData.map((data) => Work.fromJson(data)).toList();
+      print(response.body);
       return works;
     } else {
       throw Exception('Failed to load works');
@@ -45,7 +47,6 @@ class _JobWidgetState extends State<JobWidget> {
             Navigator.of(context).pop();
           },
         ),
-
       ),
       body: FutureBuilder<List<Work>>(
         future: futureWorks,
@@ -63,15 +64,32 @@ class _JobWidgetState extends State<JobWidget> {
                 return ListTile(
                   title: Text(snapshot.data![index].title),
                   subtitle: Text("Location: " + snapshot.data![index].company),
-                  // trailing: TextButton(
-                  //     onPressed: () {
-                  //       Navigator.push(
-                  //           context,
-                  //           MaterialPageRoute(
-                  //               builder: (context) => const getWorkByTitle(snapshot.data![index].title)));
-                  //     },
-                  //     child: const Text('More'),
-                  // ),
+                  trailing: TextButton(
+                    onPressed: () {
+                       print("Job ID: ${snapshot.data![index].id}");
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FutureBuilder<Work>(
+                            future: getWorkById(snapshot.data![index].id),
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState == ConnectionState.waiting) {
+                                return CircularProgressIndicator();
+                              } else if (snapshot.hasError) {
+                                return Text('Error: ${snapshot.error}');
+                              } else if (!snapshot.hasData) {
+                                return Text('No data available');
+                              } else {
+                                final work = snapshot.data!;
+                                return WorkDetailsWidget(work: work);
+                              }
+                            },
+                          ),
+                        ),
+                      );
+                    },
+                    child: const Text('More'),
+                  ),
                 );
               },
             );
