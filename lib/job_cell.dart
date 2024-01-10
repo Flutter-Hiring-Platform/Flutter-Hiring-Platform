@@ -31,6 +31,14 @@ class _JobCellState extends State<JobCell> {
             ),
           ),
         ),
+        DataColumn(
+          label: Expanded(
+            child: Text(
+              '',
+              style: TextStyle(fontStyle: FontStyle.italic),
+            ),
+          ),
+        ),
 
       ],
       rows: <DataRow>[
@@ -40,6 +48,16 @@ class _JobCellState extends State<JobCell> {
                 style: TextStyle(color: Colors.blueGrey))),
             DataCell(Text(widget.job.company,
                 style: TextStyle(color: Colors.blueGrey))),
+            DataCell(Text(widget.job.company,
+                style: TextStyle(color: Colors.blueGrey))),
+            // DataCell(TextButton(
+            //   onPressed: () {
+            //   Navigator.push(
+            //       context,
+            //       MaterialPageRoute(
+            //           builder: (context) =>  SearchWidget()));
+            //    },
+            //   child: const Text("View"))),
           ],
         ),
 

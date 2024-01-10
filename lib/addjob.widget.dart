@@ -6,10 +6,10 @@ class AddJobWidget extends StatefulWidget {
   final String title;
 
   @override
-  State<AddJobWidget> createState() => _LoginWidgetState();
+  State<AddJobWidget> createState() => _AddJobWidgetState();
 }
 
-class _LoginWidgetState extends State<AddJobWidget> {
+class _AddJobWidgetState extends State<AddJobWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
