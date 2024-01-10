@@ -17,6 +17,7 @@ class DetailWidget extends StatelessWidget {
   final String min;
   final String max;
 
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;

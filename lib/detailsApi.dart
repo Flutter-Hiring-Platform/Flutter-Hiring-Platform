@@ -27,16 +27,17 @@ class DetailsApiWidget extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           }
-          return const Detail(jobtitle: "error", description: "error",
-          location: "error", typecontract: "error",
-            min: "error", company: "error",
-            max: "error",
-          );
-          // return Detail(jobtitle: snapshot.data.first.jobtitle, description: snapshot.data.first.description,
-          //   location: snapshot.data.first.location, typecontract: snapshot.data.first.typecontract,
-          //   min: snapshot.data.first.min, company: snapshot.data.first.company,
-          //   max: snapshot.data.first.max,
-          // );//! rend data non optionel
+          // return const Detail(jobtitle: "error", description: "error",
+          // location: "error", typecontract: "error",
+          //   min: "error", company: "error",
+          //   max: "error",
+          // );
+
+          return Detail(jobtitle: snapshot.data!.jobtitle, description: snapshot.data!.description,
+            location: snapshot.data!.location, typecontract: snapshot.data!.typecontract,
+            min: snapshot.data!.min, company: snapshot.data!.company,
+            max: snapshot.data!.max,
+          );//! rend data non optionel
         },
       ),
     );

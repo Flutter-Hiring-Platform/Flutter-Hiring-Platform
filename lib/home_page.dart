@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:job_app/details.service.dart';
 import 'package:job_app/detailsApi.dart';
+import 'package:job_app/personalApi.dart';
 import 'package:job_app/personalData.widget.dart';
 import 'login_page.widget.dart';
 import 'signup_page.widget.dart';
@@ -37,6 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 TextButton(
                   onPressed: () {
                     Navigator.push(context,
+                        //MaterialPageRoute(builder: (context) => const PersonalWidget()));
                         MaterialPageRoute(builder: (context) => const PersonalDataWidget(userid: "Alex", email: "email@gmail.com", pwd: "1234")));
                   },
                   child: const Text('Pesonal data'),
@@ -110,10 +112,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const Detail(jobtitle: "error", description: "error",
-                              location: "error", typecontract: "error",
-                              min: "error", company: "error",
-                              max: "error",
+                            builder: (context) => const Detail(jobtitle: "JavaScript Developer",
+                              description: "JavaScript Developer - London/Manchester Based £45 - £55 per annum We have partnered with one of the leading digital agencies in the UK, and they are looking for a frontend/Full-Stack Developer to join their team. You will be working in a team of 4 developers where you will be focusing",
+                              location: "London, UK", typecontract: "permanent",
+                              min: "45000", company: "Salt",
+                              max: "55000",
                             )));
                   },
                   child: const Text('Details'),
