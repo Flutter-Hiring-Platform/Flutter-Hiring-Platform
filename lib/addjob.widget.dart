@@ -1,8 +1,12 @@
+
 import 'package:flutter/material.dart';
-import 'login_page.widget.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'user.dart';
+import 'add_job.dart';
 
 class AddJobWidget extends StatefulWidget {
-  const AddJobWidget({super.key, required this.title});
+  const AddJobWidget({Key? key, required this.title});
   final String title;
 
   @override
@@ -10,10 +14,19 @@ class AddJobWidget extends StatefulWidget {
 }
 
 class _AddJobWidgetState extends State<AddJobWidget> {
+  TextEditingController titleController = TextEditingController();
+  TextEditingController locationController = TextEditingController();
+  Future<User>? _futureUser;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Center(child: Text(widget.title)),
       ),
@@ -21,77 +34,42 @@ class _AddJobWidgetState extends State<AddJobWidget> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+          const Text("Add a new job announce "),
             SizedBox(
               width: 300,
               child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    TextField(
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Title',
-                        ),
-                        onChanged: (str) {
-                          print("$str");
-                        }),
-                    TextField(
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Company',
-                        ),
-                        onChanged: (str) {
-                          print("$str");
-                        }),
-                    TextField(
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Description',
-                        ),
-                        onChanged: (str) {
-                          print("$str");
-                        }),
-                    TextField(
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Location',
-                        ),
-                        onChanged: (str) {
-                          print("$str");
-                        }),
-                    TextField(
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Salary',
-                        ),
-                        onChanged: (str) {
-                          print("$str");
-                        }),
-                    TextField(
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Category',
-                        ),
-                        onChanged: (str) {
-                          print("$str");
-                        }),
-                    TextField(
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Contract Type',
-                        ),
-                        onChanged: (str) {
-                          print("$str");
-                        }),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Login()));
-                      },
-                      child: const Text('Add Job'),
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  TextField(
+                    controller: titleController,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Title',
                     ),
-                  ]),
+                    onChanged: (str) {
+                      print("$str");
+                    },
+                  ),
+                  TextField(
+                    controller: locationController,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Location',
+                    ),
+                    onChanged: (str) {
+                      print("$str");
+                    },
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        _futureUser = createJob(titleController.text, locationController.text);
+                      });
+                    },
+                    child: const Text('Add +'),
+                  ),
+                ],
+              ),
             )
           ],
         ),

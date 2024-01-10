@@ -29,20 +29,12 @@ class _LoginWidgetState extends State<LoginWidget> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text("congrats"),
+          const Text("Login"),
             SizedBox(
               width: 300,
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    TextField(
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'UserID',
-                        ),
-                        onChanged: (str) {
-                          print("$str");
-                        }),
                     TextField(
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),

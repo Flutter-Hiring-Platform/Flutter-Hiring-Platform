@@ -34,7 +34,7 @@ class _SignupWidgetState extends State<SignupWidget> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text("congrats"),
+          const Text("Create an account"),
             SizedBox(
               width: 300,
               child: Column(
@@ -66,7 +66,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                         _futureUser = createUser(usernameController.text, passwordController.text);
                       });
                     },
-                    child: const Text('Create Data'),
+                    child: const Text('Create'),
                   ),
                 ],
               ),

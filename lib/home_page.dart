@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'login_page.widget.dart';
 import 'signup_page.widget.dart';
 import 'joblist.widget.dart';
+import 'addjob_page.widget.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -28,6 +29,13 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             child: const Text('Job List'),
           ),
+         TextButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const AddJob()));
+                  },
+                  child: const Text('+ Job'),
+                ),
         ], 
       ),
       body: Center(
