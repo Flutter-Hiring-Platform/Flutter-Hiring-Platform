@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:job_app/details.service.dart';
+import 'package:job_app/detailsApi.dart';
 import 'login_page.widget.dart';
 import 'signup_page.widget.dart';
 import 'details_page.widget.dart';
@@ -12,6 +14,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String _id = '0';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,6 +55,33 @@ class _MyHomePageState extends State<MyHomePage> {
                             builder: (context) => const Signup()));
                   },
                   child: const Text('Signup'),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("Try API !",
+                    style: TextStyle(fontSize: 24)),
+                SizedBox(
+                  width: 300,
+                  child: TextField(
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: "id",
+                      ),
+                      onChanged: (str) {
+                        _id = str;
+                      }),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DetailsApiWidget(id: _id)));
+                  },
+                  child: const Text('API'),
                 ),
               ],
             ),
