@@ -46,6 +46,10 @@ class PersonalDataWidget extends StatelessWidget {
                         Text(pwd)
                       ],
                     ),
+                    TextButton(
+                        onPressed: (){},
+                        child: const Text('Go to Home page')
+                    ),
 
                   ]),
             )
