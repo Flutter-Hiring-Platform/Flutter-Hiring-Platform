@@ -105,6 +105,16 @@ app.get("/user/:id", function (req, res) {
     });
 });
 
+app.get("/username/:username", function (req, res) {
+  Users.findOne({ username: req.params.username })
+    .then((user) => {
+      res.status(201).send(user);
+    })
+    .catch((error) => {
+      res.status(400).send(error);
+    });
+});
+
 app.delete("/user/:id", function (req, res) {
   Users.findByIdAndDelete(req.params.id)
     .then((user) => {

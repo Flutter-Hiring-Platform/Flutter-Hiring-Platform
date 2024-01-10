@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import "user_login.dart";
+import "user.dart";
 class LoginWidget extends StatefulWidget {
   const LoginWidget({super.key, required this.title});
 
@@ -11,6 +12,9 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
+    TextEditingController usernameController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
+    Future<User>? _futureUser;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,21 +40,32 @@ class _LoginWidgetState extends State<LoginWidget> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     TextField(
+                      controller: usernameController,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: 'Email',
+                          labelText: 'Username',
                         ),
                         onChanged: (str) {
                           print("$str");
                         }),
+                        
                     TextField(
+                      controller: passwordController,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: 'PassWord',
+                          labelText: 'Password',
                         ),
                         onChanged: (str) {
                           print("$str");
                         }),
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          _futureUser = userLogin(usernameController.text, passwordController.text);
+                        });
+                      },
+                      child: const Text('Login'),
+                    ),
                     
                   ]),
             )
