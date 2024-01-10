@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'user.dart';
+import 'work.dart';
 import 'add_job.dart';
 
 class AddJobWidget extends StatefulWidget {
@@ -16,7 +16,12 @@ class AddJobWidget extends StatefulWidget {
 class _AddJobWidgetState extends State<AddJobWidget> {
   TextEditingController titleController = TextEditingController();
   TextEditingController locationController = TextEditingController();
-  Future<User>? _futureUser;
+  TextEditingController descriptionController = TextEditingController();
+  TextEditingController salaryMaxController = TextEditingController();
+  TextEditingController salaryMinController = TextEditingController();
+  TextEditingController companyController = TextEditingController();
+  TextEditingController contractTypeController = TextEditingController();
+  Future<Work>? _futureUser;
 
 
   @override
@@ -60,10 +65,60 @@ class _AddJobWidgetState extends State<AddJobWidget> {
                       print("$str");
                     },
                   ),
+                  TextField(
+                    controller: descriptionController,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Descripton',
+                    ),
+                    onChanged: (str) {
+                      print("$str");
+                    },
+                  ),
+                  TextField(
+                    controller: salaryMaxController,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Salary Max',
+                    ),
+                    onChanged: (str) {
+                      print("$str");
+                    },
+                  ),
+                  TextField(
+                    controller: salaryMinController,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Salary Min',
+                    ),
+                    onChanged: (str) {
+                      print("$str");
+                    },
+                  ),
+                  TextField(
+                    controller: companyController,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Company',
+                    ),
+                    onChanged: (str) {
+                      print("$str");
+                    },
+                  ),
+                  TextField(
+                    controller: contractTypeController,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Contract Type',
+                    ),
+                    onChanged: (str) {
+                      print("$str");
+                    },
+                  ),
                   ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        _futureUser = createJob(titleController.text, locationController.text);
+                        _futureUser = createJob(titleController.text, descriptionController.text, locationController.text, salaryMaxController.text, salaryMinController.text, companyController.text, contractTypeController.text);
                       });
                     },
                     child: const Text('Add +'),
