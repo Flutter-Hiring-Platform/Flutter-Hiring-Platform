@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({super.key, required this.title});
+
   final String title;
 
   @override
@@ -14,7 +15,14 @@ class _LoginWidgetState extends State<LoginWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        backgroundColor: Theme
+            .of(context)
+            .colorScheme
+            .inversePrimary,
         title: Center(child: Text(widget.title)),
       ),
       body: Center(

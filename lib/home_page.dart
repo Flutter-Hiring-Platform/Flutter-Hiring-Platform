@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'login_page.widget.dart';
 import 'signup_page.widget.dart';
+import 'joblist.widget.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -17,6 +18,17 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Center(child: Text(widget.title)),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const JobWidget()));
+            },
+            child: const Text('Job List'),
+          ),
+        ], 
       ),
       body: Center(
         child: Column(
