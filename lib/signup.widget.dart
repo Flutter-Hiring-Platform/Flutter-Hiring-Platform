@@ -1,9 +1,10 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'user.dart';
-import 'create_user.dart';
+import 'user_api.dart';
 
 class SignupWidget extends StatefulWidget {
   const SignupWidget({Key? key, required this.title});
@@ -15,6 +16,7 @@ class SignupWidget extends StatefulWidget {
 
 class _SignupWidgetState extends State<SignupWidget> {
   TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   Future<User>? _futureUser;
 
@@ -23,12 +25,9 @@ class _SignupWidgetState extends State<SignupWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Center(child: Text(widget.title)),
+        leading: const BackButton(),
       ),
       body: Center(
         child: Column(
@@ -46,9 +45,13 @@ class _SignupWidgetState extends State<SignupWidget> {
                       border: OutlineInputBorder(),
                       labelText: 'Username',
                     ),
-                    onChanged: (str) {
-                      print("$str");
-                    },
+                  ),
+                  TextField(
+                    controller: emailController,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'E-mail',
+                    ),
                   ),
                   TextField(
                     controller: passwordController,
@@ -56,14 +59,11 @@ class _SignupWidgetState extends State<SignupWidget> {
                       border: OutlineInputBorder(),
                       labelText: 'Password',
                     ),
-                    onChanged: (str) {
-                      print("$str");
-                    },
                   ),
                   ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        _futureUser = createUser(usernameController.text, passwordController.text);
+                        _futureUser = createUser(usernameController.text, passwordController.text, emailController.text, context);
                       });
                     },
                     child: const Text('Create'),

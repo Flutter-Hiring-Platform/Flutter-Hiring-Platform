@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import "user_login.dart";
+import "user_api.dart";
 import "user.dart";
 class LoginWidget extends StatefulWidget {
   const LoginWidget({super.key, required this.title});
@@ -19,15 +19,14 @@ class _LoginWidgetState extends State<LoginWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: const Text('Login'),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.of(context).pop(),
+          icon: const BackButtonIcon(),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
         ),
-        backgroundColor: Theme
-            .of(context)
-            .colorScheme
-            .inversePrimary,
-        title: Center(child: Text(widget.title)),
       ),
       body: Center(
         child: Column(
@@ -45,9 +44,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                           border: OutlineInputBorder(),
                           labelText: 'Username',
                         ),
-                        onChanged: (str) {
-                          print("$str");
-                        }),
+                       
+                    ),
                         
                     TextField(
                       controller: passwordController,
@@ -55,9 +53,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                           border: OutlineInputBorder(),
                           labelText: 'Password',
                         ),
-                        onChanged: (str) {
-                          print("$str");
-                        }),
+                    ),
+                        
                     ElevatedButton(
                       onPressed: () {
                         setState(() {

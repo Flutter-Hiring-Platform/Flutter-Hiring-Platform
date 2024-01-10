@@ -38,6 +38,14 @@ class _JobWidgetState extends State<JobWidget> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Job List'),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        leading: IconButton(
+          icon: const BackButtonIcon(),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+
       ),
       body: FutureBuilder<List<Work>>(
         future: futureWorks,
