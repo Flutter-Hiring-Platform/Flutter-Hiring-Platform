@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:job_app/details.service.dart';
 import 'package:job_app/detailsApi.dart';
+import 'package:job_app/personalData.widget.dart';
 import 'login_page.widget.dart';
 import 'signup_page.widget.dart';
 import 'details_page.widget.dart';
@@ -28,6 +29,20 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text('User Data',
+                    style: TextStyle(fontSize: 24)),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const PersonalDataWidget(userid: "Alex", email: "email@gmail.com", pwd: "1234")));
+                  },
+                  child: const Text('Pesonal data'),
+                ),
+              ],
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

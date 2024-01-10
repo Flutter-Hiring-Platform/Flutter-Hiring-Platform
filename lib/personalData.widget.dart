@@ -12,8 +12,6 @@ class PersonalDataWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -30,20 +28,23 @@ class PersonalDataWidget extends StatelessWidget {
               child: Column(
                   children: <Widget>[
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         const Text('UserId: '),
                         Text(userid)
                       ],
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         const Text('e-mail: '),
                         Text(email)
                       ],
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        const Text('Password '),
+                        const Text('Password: '),
                         Text(pwd)
                       ],
                     ),
