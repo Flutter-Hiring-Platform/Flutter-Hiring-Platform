@@ -1,9 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import "user_api.dart";
-import "user.dart";
+import 'user_api.dart';
+import 'user.dart';
+
 class LoginWidget extends StatefulWidget {
-  const LoginWidget({super.key, required this.title});
+  const LoginWidget({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -12,9 +12,10 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
-    TextEditingController usernameController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-    Future<User>? _futureUser;
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  Future<User>? _futureUser;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,45 +29,69 @@ class _LoginWidgetState extends State<LoginWidget> {
           },
         ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-          const Text("Login"),
-            SizedBox(
-              width: 300,
-              child: Column(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text(
+                "Login",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                width: 300,
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    SizedBox(height: 16),
                     TextField(
                       controller: usernameController,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Username',
-                        ),
-                       
+                      decoration: InputDecoration(
+                        labelText: 'Username',
+                        border: OutlineInputBorder(),
+                      ),
                     ),
-                        
+                    SizedBox(height: 16),
                     TextField(
                       controller: passwordController,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Password',
-                        ),
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        labelText: 'Password',
+                        border: OutlineInputBorder(),
+                      ),
                     ),
-                        
-                    ElevatedButton(
+                    SizedBox(height: 16),
+                    TextButton(
+                      style: ButtonStyle(
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                        overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                          (Set<MaterialState> states) {
+                            if (states.contains(MaterialState.hovered))
+                              return Colors.blue.withOpacity(0.04);
+                            if (states.contains(MaterialState.focused) ||
+                                states.contains(MaterialState.pressed))
+                              return Colors.blue.withOpacity(0.12);
+                            return null; // Defer to the widget's default.
+                          },
+                        ),
+                      ),
                       onPressed: () {
                         setState(() {
-                          _futureUser = userLogin(usernameController.text, passwordController.text, context);
+                          _futureUser =
+                              userLogin(usernameController.text, passwordController.text, context);
                         });
                       },
-                      child: const Text('Login'),
+                      child: Text('Login'),
                     ),
-                    
-                  ]),
-            )
-          ],
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

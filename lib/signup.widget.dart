@@ -1,13 +1,11 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 import 'user.dart';
 import 'user_api.dart';
 
 class SignupWidget extends StatefulWidget {
-  const SignupWidget({Key? key, required this.title});
+  const SignupWidget({Key? key, required this.title}) : super(key: key);
+
   final String title;
 
   @override
@@ -20,7 +18,6 @@ class _SignupWidgetState extends State<SignupWidget> {
   TextEditingController passwordController = TextEditingController();
   Future<User>? _futureUser;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,49 +26,77 @@ class _SignupWidgetState extends State<SignupWidget> {
         title: Center(child: Text(widget.title)),
         leading: const BackButton(),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-          const Text("Create an account"),
-            SizedBox(
-              width: 300,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  TextField(
-                    controller: usernameController,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Username',
-                    ),
-                  ),
-                  TextField(
-                    controller: emailController,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'E-mail',
-                    ),
-                  ),
-                  TextField(
-                    controller: passwordController,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Password',
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        _futureUser = createUser(usernameController.text, passwordController.text, emailController.text, context);
-                      });
-                    },
-                    child: const Text('Create'),
-                  ),
-                ],
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text(
+                "Create an account",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            )
-          ],
+              SizedBox(
+                width: 300,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SizedBox(height: 16),
+                    TextField(
+                      controller: usernameController,
+                      decoration: InputDecoration(
+                        labelText: 'Username',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    TextField(
+                      controller: emailController,
+                      decoration: InputDecoration(
+                        labelText: 'E-mail',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    TextField(
+                      controller: passwordController,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        labelText: 'Password',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    TextButton(
+                      style: ButtonStyle(
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                        overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                          (Set<MaterialState> states) {
+                            if (states.contains(MaterialState.hovered))
+                              return Colors.blue.withOpacity(0.04);
+                            if (states.contains(MaterialState.focused) ||
+                                states.contains(MaterialState.pressed))
+                              return Colors.blue.withOpacity(0.12);
+                            return null; // Defer to the widget's default.
+                          },
+                        ),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _futureUser =
+                              userLogin(usernameController.text, passwordController.text, context);
+                        });
+                      },
+                      child: Text('Create'),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

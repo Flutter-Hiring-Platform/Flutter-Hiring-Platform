@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'work.dart';
+import 'job_api.dart';
+import 'apply_job.widget.dart';
 
 class WorkDetailsWidget extends StatelessWidget {
   final Work work;
+  
 
   const WorkDetailsWidget({Key? key, required this.work}) : super(key: key);
 
@@ -73,9 +76,22 @@ class WorkDetailsWidget extends StatelessWidget {
                 ),
               ),
               Text(work.contract_type),
+              ElevatedButton(
+                onPressed: () {
+                  // Add your apply logic here
+                  // For example, you can navigate to an ApplyScreen
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ApplyJob(work)),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue, // Change color as needed
+                ),
+                child: Text('Apply'),
+              ),
             ],
           ),
-          
         ),
       ),
     );
