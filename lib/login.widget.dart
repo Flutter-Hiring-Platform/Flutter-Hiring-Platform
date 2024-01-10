@@ -16,6 +16,7 @@ class _LoginWidgetState extends State<LoginWidget> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Center(child: Text(widget.title)),
+        leading: const BackButton(),
       ),
       body: Center(
         child: Column(
