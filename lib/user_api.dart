@@ -36,7 +36,7 @@ Future<User> createUser(String username, String password, String email, BuildCon
     return User.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
   } else {
     Fluttertoast.showToast(
-        msg: "Failed to create account, email already taken",
+        msg: "Failed to create account email or/and username already taken",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         backgroundColor: Colors.red,

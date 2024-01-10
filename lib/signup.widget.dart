@@ -96,7 +96,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                       onPressed: () {
                         setState(() {
                           _futureUser =
-                              userLogin(usernameController.text, passwordController.text, context);
+                              createUser(usernameController.text, passwordController.text, emailController.text, context);
                         });
                       },
                       child: Text('Create'),
