@@ -22,7 +22,6 @@ Future<Work> createJob(String title, String description, String location, String
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
       "Access-Control-Allow-Origin": "*", 
-      // "Access-Control-Allow-Credentials":true, 
       "Access-Control-Allow-Headers": "Origin,Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,locale",
       "Access-Control-Allow-Methods": "POST, OPTIONS",
     },
