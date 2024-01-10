@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'work.dart';
+import 'home_page.dart';
 import 'job_api.dart';
 
 class AddJobWidget extends StatefulWidget {
@@ -26,8 +27,13 @@ class _AddJobWidgetState extends State<AddJobWidget> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.of(context).pop(),
+          icon: const BackButtonIcon(),
+         onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const MyHomePage(title: 'LinkedIn')),
+            );
+          },
         ),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Center(child: Text(widget.title)),

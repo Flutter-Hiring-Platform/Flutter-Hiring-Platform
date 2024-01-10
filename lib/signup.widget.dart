@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'user.dart';
 import 'user_api.dart';
+import 'home_page.dart';
 
 class SignupWidget extends StatefulWidget {
   const SignupWidget({Key? key, required this.title}) : super(key: key);
@@ -24,7 +25,15 @@ class _SignupWidgetState extends State<SignupWidget> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Center(child: Text(widget.title)),
-        leading: const BackButton(),
+        leading: IconButton(
+          icon: const BackButtonIcon(),
+         onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const MyHomePage(title: 'LinkedIn')),
+            );
+          },
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

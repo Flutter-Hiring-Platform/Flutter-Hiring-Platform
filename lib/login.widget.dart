@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'user_api.dart';
 import 'user.dart';
-
+import 'home_page.dart';
 class LoginWidget extends StatefulWidget {
   const LoginWidget({Key? key, required this.title}) : super(key: key);
-
   final String title;
-
   @override
   State<LoginWidget> createState() => _LoginWidgetState();
 }
@@ -22,10 +20,14 @@ class _LoginWidgetState extends State<LoginWidget> {
       appBar: AppBar(
         title: const Text('Login'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+       
         leading: IconButton(
           icon: const BackButtonIcon(),
-          onPressed: () {
-            Navigator.of(context).pop();
+         onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const MyHomePage(title: 'LinkedIn')),
+            );
           },
         ),
       ),
