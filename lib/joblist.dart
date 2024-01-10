@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'work.dart';
-import 'job_detail.dart';
+import 'job_api.dart';
 import 'job_detail.widget.dart';
 
 class JobWidget extends StatefulWidget {
@@ -19,20 +19,6 @@ class _JobWidgetState extends State<JobWidget> {
   void initState() {
     super.initState();
     futureWorks = fetchWorks();
-  }
-
-  Future<List<Work>> fetchWorks() async {
-    final response = await http.get(
-      Uri.parse('http://localhost:3000/jobs'),
-    );
-    if (response.statusCode == 201) {
-      List<dynamic> jsonData = jsonDecode(response.body);
-      List<Work> works = jsonData.map((data) => Work.fromJson(data)).toList();
-      print(response.body);
-      return works;
-    } else {
-      throw Exception('Failed to load works');
-    }
   }
 
   @override
@@ -66,7 +52,6 @@ class _JobWidgetState extends State<JobWidget> {
                   subtitle: Text("Location: " + snapshot.data![index].company),
                   trailing: TextButton(
                     onPressed: () {
-                       print("Job ID: ${snapshot.data![index].id}");
                       Navigator.push(
                         context,
                         MaterialPageRoute(

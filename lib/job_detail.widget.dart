@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'work.dart'; // Make sure to import your Work class
+import 'work.dart';
 
 class WorkDetailsWidget extends StatelessWidget {
   final Work work;
@@ -13,18 +13,69 @@ class WorkDetailsWidget extends StatelessWidget {
         title: Text('Job Details'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Title: ${work.title}'),
-            Text('Company: ${work.company}'),
-            Text('Location: ${work.location}'),
-            Text('Description: ${work.description}'),
-            Text('Salary Range: ${work.salary_min} - ${work.salary_max}'),
-            Text('Contract Type: ${work.contract_type}'),
-          ],
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Title:',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(work.title),
+              SizedBox(height: 12),
+              Text(
+                'Company:',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(work.company),
+              SizedBox(height: 12),
+              Text(
+                'Location:',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(work.location),
+              SizedBox(height: 12),
+              Text(
+                'Description:',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(work.description),
+              SizedBox(height: 12),
+              Text(
+                'Salary Range:',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text('${work.salary_min} - ${work.salary_max}'),
+              SizedBox(height: 12),
+              Text(
+                'Contract Type:',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(work.contract_type),
+            ],
+          ),
+          
         ),
       ),
     );

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'work.dart';
-import 'add_job.dart';
+import 'job_api.dart';
 
 class AddJobWidget extends StatefulWidget {
   const AddJobWidget({Key? key, required this.title});
@@ -51,9 +51,7 @@ class _AddJobWidgetState extends State<AddJobWidget> {
                       border: OutlineInputBorder(),
                       labelText: 'Title',
                     ),
-                    onChanged: (str) {
-                      print("$str");
-                    },
+                    
                   ),
                   TextField(
                     controller: locationController,
@@ -61,9 +59,7 @@ class _AddJobWidgetState extends State<AddJobWidget> {
                       border: OutlineInputBorder(),
                       labelText: 'Location',
                     ),
-                    onChanged: (str) {
-                      print("$str");
-                    },
+                    
                   ),
                   TextField(
                     controller: descriptionController,
@@ -71,9 +67,7 @@ class _AddJobWidgetState extends State<AddJobWidget> {
                       border: OutlineInputBorder(),
                       labelText: 'Descripton',
                     ),
-                    onChanged: (str) {
-                      print("$str");
-                    },
+                    
                   ),
                   TextField(
                     controller: salaryMaxController,
@@ -81,9 +75,7 @@ class _AddJobWidgetState extends State<AddJobWidget> {
                       border: OutlineInputBorder(),
                       labelText: 'Salary Max',
                     ),
-                    onChanged: (str) {
-                      print("$str");
-                    },
+                    
                   ),
                   TextField(
                     controller: salaryMinController,
@@ -91,9 +83,7 @@ class _AddJobWidgetState extends State<AddJobWidget> {
                       border: OutlineInputBorder(),
                       labelText: 'Salary Min',
                     ),
-                    onChanged: (str) {
-                      print("$str");
-                    },
+                   
                   ),
                   TextField(
                     controller: companyController,
@@ -101,9 +91,7 @@ class _AddJobWidgetState extends State<AddJobWidget> {
                       border: OutlineInputBorder(),
                       labelText: 'Company',
                     ),
-                    onChanged: (str) {
-                      print("$str");
-                    },
+                    
                   ),
                   TextField(
                     controller: contractTypeController,
@@ -111,14 +99,12 @@ class _AddJobWidgetState extends State<AddJobWidget> {
                       border: OutlineInputBorder(),
                       labelText: 'Contract Type',
                     ),
-                    onChanged: (str) {
-                      print("$str");
-                    },
+                    
                   ),
                   ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        _futureUser = createJob(titleController.text, descriptionController.text, locationController.text, salaryMaxController.text, salaryMinController.text, companyController.text, contractTypeController.text);
+                        _futureUser = createJob(titleController.text, descriptionController.text, locationController.text, salaryMaxController.text, salaryMinController.text, companyController.text, contractTypeController.text,context);
                       });
                     },
                     child: const Text('Add +'),
