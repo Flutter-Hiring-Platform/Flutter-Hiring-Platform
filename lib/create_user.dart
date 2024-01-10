@@ -5,7 +5,7 @@ import 'user.dart';
 
 Future<User> createUser(String username, String password) async {
   final response = await http.post(
-    Uri.parse('http://localhost:3000/users'),
+    Uri.parse('http://localhost:3000/jobs'),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
