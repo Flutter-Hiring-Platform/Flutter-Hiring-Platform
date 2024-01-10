@@ -7,6 +7,10 @@ const app = express()
 
 app.use(express.json());
 
+app.patch('/health', function (req, res) {
+    res.send('ok')
+})
+
 // JOBS
 
 app.get('/jobs', (req, res) => {
@@ -17,8 +21,36 @@ app.get('/jobs', (req, res) => {
     })
 })
 
+app.post('/jobs', (req, res) => {
+    const user = new Users(req.body);
+    user.save().then((job) => {
+        res.status(201).send(job);
+    }).catch((error) => {
+        res.status(400).send(error)
+    })
+})
+
 app.get('/job/:id', (req, res) => {
     Jobs.findById(req.params.id).then((job) => {
+        res.status(201).send(job);
+    }).catch((error) => {
+        res.status(400).send(error)
+    })
+})
+
+app.delete('/job/:id', (req, res) => {
+    Jobs.findByIdAndDelete(req.params.id).then((job) => {
+        res.status(201).send(job);
+    }).catch((error) => {
+        res.status(400).send(error)
+    })
+})
+
+app.patch('/job/:id', function (req, res) {
+    Jobs.findByIdAndUpdate(req.params.id, req.body, {new: true}).then((job) => {
+        if (!job) {
+            return res.status(404).send()
+        }
         res.status(201).send(job);
     }).catch((error) => {
         res.status(400).send(error)
@@ -61,7 +93,14 @@ app.delete('/user/:id', function (req, res) {
 })
 
 app.patch('/user/:id', function (req, res) {
-    res.send('Hello ' + req.params.id + '.')
+    Users.findByIdAndUpdate(req.params.id, req.body, {new: true}).then((user) => {
+        if (!user) {
+            return res.status(404).send()
+        }
+        res.status(201).send(user);
+    }).catch((error) => {
+        res.status(400).send(error)
+    })
 })
 
 app.listen(3000)
