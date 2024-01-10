@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:job_app/details.service.dart';
+import 'package:job_app/details.wigdet.dart';
 import 'package:job_app/detailsApi.dart';
 import 'package:job_app/personalApi.dart';
 import 'package:job_app/personalData.widget.dart';
 import 'login_page.widget.dart';
 import 'signup_page.widget.dart';
 import 'details_page.widget.dart';
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -93,10 +95,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => DetailsApiWidget(id: _id)));
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => DetailsWidget(id: _id)));
                   },
                   child: const Text('API'),
                 ),
@@ -117,6 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               location: "London, UK", typecontract: "permanent",
                               min: "45000", company: "Salt",
                               max: "55000",
+                              id : "659c17cd49d7ba79a639365f",
                             )));
                   },
                   child: const Text('Details'),

@@ -6,7 +6,7 @@ class Detail extends StatelessWidget {
   required this.jobtitle, required this.description,
   required this.location, required this.company,
   required this.typecontract, required this.min,
-  required this.max});
+  required this.max, required this.id});
   final String jobtitle;
   final String description;
   final String location;
@@ -14,6 +14,7 @@ class Detail extends StatelessWidget {
   final String typecontract;
   final String min;
   final String max;
+  final String id;
 
   // This widget is the root of your application.
   @override
@@ -25,7 +26,7 @@ class Detail extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: DetailWidget(title: 'Jobs Details', jobtitle: jobtitle, description: description, location: location, company: company, typecontract :typecontract,  min: min, max:max),
+      home: DetailWidget(title: 'Jobs Details', jobtitle: jobtitle, description: description, location: location, company: company, typecontract :typecontract,  min: min, max:max, id :id),
     );
   }
 }

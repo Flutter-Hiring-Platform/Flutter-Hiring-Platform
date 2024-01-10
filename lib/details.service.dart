@@ -5,7 +5,7 @@ import 'details.dart';
 
 class DetailsService {
 
-  static Future<Details> getDetails(String id) async {
+  static Future<List<Details>> getDetails(String id) async {
 
     final client = http.Client();
     final response = await client.get(Uri.parse("http://localhost:3000/job/$id"));
@@ -16,7 +16,7 @@ class DetailsService {
     //   print("$json");
     //   return json.map((element) => Details.fromJson(element)).toList();
     //
-
+      print(response.body);
       return Details.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
     }else{
       throw Exception('Failed to load data');
