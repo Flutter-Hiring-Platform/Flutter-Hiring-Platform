@@ -146,5 +146,17 @@ app.patch("/user/:id", function (req, res) {
       res.status(400).send(error);
     });
 });
+app.put("/user/:id", function (req, res) {
+  Users.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then((user) => {
+      if (!user) {
+        return res.status(404).send();
+      }
+      res.status(201).send(user);
+    })
+    .catch((error) => {
+      res.status(400).send(error);
+    });
+});
 
 app.listen(3000);

@@ -75,3 +75,32 @@ Future<Work> createJob(String title, String description, String location, String
       throw Exception('Failed to load works');
     }
   }
+
+
+  Future<List<Work>> applyJob(String username, String jobId) async {
+    final userInfo = await http.get(
+      Uri.parse('http://localhost:3000/username/$username'),
+    );
+    final userId = jsonDecode(userInfo.body)['id'];
+    print("IM HERE _____________"+jsonDecode(userInfo.body));
+    print("IM HERE _____________"+userId);
+    final response = await http.patch(
+      Uri.parse('http://localhost:3000/user/$userId'),
+    );
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+      "Access-Control-Allow-Origin": "*", 
+      "Access-Control-Allow-Headers": "Origin,Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,locale",
+      "Access-Control-Allow-Methods": "PATCH, OPTIONS",
+    };
+    body: jsonEncode(<String, String>{
+      'applied_job': jobId,
+    });
+    if (response.statusCode == 201) {
+      List<dynamic> jsonData = jsonDecode(response.body);
+      List<Work> works = jsonData.map((data) => Work.fromJson(data)).toList();
+      return works;
+    } else {
+      throw Exception('Failed to load works');
+    }
+  }

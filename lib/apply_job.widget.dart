@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'work.dart';
+import 'job_api.dart';
 
-class ApplyJob extends StatelessWidget {
+class ApplyJob extends StatefulWidget {
   final Work work;
 
   ApplyJob(this.work);
+
+  @override
+  _ApplyJobState createState() => _ApplyJobState();
+}
+
+class _ApplyJobState extends State<ApplyJob> {
+  TextEditingController usernameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +34,7 @@ class ApplyJob extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Text(work.title),
+            Text(widget.work.title),
             SizedBox(height: 12),
             Text(
               'Company:',
@@ -35,7 +43,7 @@ class ApplyJob extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Text(work.company),
+            Text(widget.work.company),
             SizedBox(height: 12),
             Text(
               'Your Information:',
@@ -45,15 +53,18 @@ class ApplyJob extends StatelessWidget {
               ),
             ),
             TextField(
+              controller: usernameController,
               decoration: InputDecoration(
-                labelText: 'Your email',
+                labelText: 'Your Username',
                 border: OutlineInputBorder(),
               ),
             ),
             SizedBox(height: 12),
             ElevatedButton(
               onPressed: () {
-                Navigator.pop(context); 
+                // applyJob(widget.work.id, usernameController.text).then((_) {
+                  Navigator.pop(context);
+                // });
               },
               style: ElevatedButton.styleFrom(
                 primary: Colors.blue,
