@@ -20,7 +20,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
+        title: const Text('TECH HIRING'),
         backgroundColor: Theme
             .of(context)
             .colorScheme

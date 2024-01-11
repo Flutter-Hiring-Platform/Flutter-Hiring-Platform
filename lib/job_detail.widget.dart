@@ -13,7 +13,7 @@ class WorkDetailsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Job Details'),
+        title: Text('TECH HIRING'),
         backgroundColor: Theme
             .of(context)
             .colorScheme

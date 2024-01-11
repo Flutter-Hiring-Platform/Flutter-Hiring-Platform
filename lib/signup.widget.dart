@@ -34,7 +34,7 @@ class _SignupWidgetState extends State<SignupWidget> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => const MyHomePage(title: 'LinkedIn')),
+                  builder: (context) => const MyHomePage(title: 'TECH HIRING')),
             );
           },
         ),

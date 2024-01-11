@@ -30,7 +30,7 @@ class _PersonalDataWidgetState extends State<PersonalDataWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Personal Data'),
+        title: const Text('TECH HIRING'),
         backgroundColor: Theme
             .of(context)
             .colorScheme

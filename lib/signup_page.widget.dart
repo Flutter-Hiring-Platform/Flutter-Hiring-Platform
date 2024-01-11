@@ -15,7 +15,7 @@ class Signup extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const SignupWidget(title: 'Sign up'),
+      home: const SignupWidget(title: 'TECH HIRING'),
     );
   }
 }

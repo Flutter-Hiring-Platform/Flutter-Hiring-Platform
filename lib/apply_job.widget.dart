@@ -22,7 +22,7 @@ class _ApplyJobState extends State<ApplyJob> {
             .of(context)
             .colorScheme
             .inversePrimary,
-        title: Text('Apply for Job'),
+        title: Text('TECH HIRING'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

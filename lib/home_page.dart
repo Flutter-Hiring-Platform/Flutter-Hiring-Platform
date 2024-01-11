@@ -27,7 +27,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   MaterialPageRoute(
                       builder: (context) => const JobWidget()));
             },
-            child: const Text('Job List'),
+            child: const Text('Job list'),
           ),
          TextButton(
                   onPressed: () {
@@ -42,11 +42,16 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            const Text('Welcome to Tech Hiring !',
+                    style: TextStyle(fontSize: 36)),
+            const Text('Where you can find your dream job on this website',
+                    style: TextStyle(fontSize: 24)),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Welcome to LinkedIn !',
-                    style: TextStyle(fontSize: 24)),
+                
+                const Text('My Personal Space ',
+                    style: TextStyle(fontSize: 16)),
                     ElevatedButton(
                     onPressed: () {
                       Navigator.push(
@@ -68,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text("Don't have an account yet ? sign up for free !",
+                const Text("Don't have an account yet ? Sign up for free !",
                     style: TextStyle(fontSize: 24)),
                     ElevatedButton(
                     onPressed: () {

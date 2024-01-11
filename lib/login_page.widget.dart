@@ -14,7 +14,7 @@ class Login extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const LoginWidget(title: 'Sign in'),
+      home: const LoginWidget(title: 'TECH HIRNG'),
     );
   }
 }

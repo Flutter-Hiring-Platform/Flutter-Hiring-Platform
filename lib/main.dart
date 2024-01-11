@@ -13,12 +13,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'LinkedIn',
+      title: 'TECH HIRING',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'LinkedIn'),
+      home: const MyHomePage(title: 'TECH HIRING'),
     );
   }
 }

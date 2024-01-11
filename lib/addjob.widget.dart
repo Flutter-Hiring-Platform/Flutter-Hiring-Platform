@@ -32,7 +32,7 @@ class _AddJobWidgetState extends State<AddJobWidget> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => const MyHomePage(title: 'LinkedIn')),
+                  builder: (context) => const MyHomePage(title: 'TECH HIRING')),
             );
           },
         ),

@@ -13,7 +13,7 @@ class AddJob extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const AddJobWidget(title: 'Add a job'),
+      home: const AddJobWidget(title: 'TECH HIRING'),
     );
   }
 }
