@@ -26,7 +26,10 @@ class _JobWidgetState extends State<JobWidget> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Job List'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Theme
+            .of(context)
+            .colorScheme
+            .inversePrimary,
         leading: IconButton(
           icon: const BackButtonIcon(),
           onPressed: () {
@@ -55,21 +58,23 @@ class _JobWidgetState extends State<JobWidget> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => FutureBuilder<Work>(
-                            future: getWorkById(snapshot.data![index].id),
-                            builder: (context, snapshot) {
-                              if (snapshot.connectionState == ConnectionState.waiting) {
-                                return CircularProgressIndicator();
-                              } else if (snapshot.hasError) {
-                                return Text('Error: ${snapshot.error}');
-                              } else if (!snapshot.hasData) {
-                                return Text('No data available');
-                              } else {
-                                final work = snapshot.data!;
-                                return WorkDetailsWidget(work: work);
-                              }
-                            },
-                          ),
+                          builder: (context) =>
+                              FutureBuilder<Work>(
+                                future: getWorkById(snapshot.data![index].id),
+                                builder: (context, snapshot) {
+                                  if (snapshot.connectionState ==
+                                      ConnectionState.waiting) {
+                                    return CircularProgressIndicator();
+                                  } else if (snapshot.hasError) {
+                                    return Text('Error: ${snapshot.error}');
+                                  } else if (!snapshot.hasData) {
+                                    return Text('No data available');
+                                  } else {
+                                    final work = snapshot.data!;
+                                    return WorkDetailsWidget(work: work);
+                                  }
+                                },
+                              ),
                         ),
                       );
                     },

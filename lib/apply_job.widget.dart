@@ -18,7 +18,10 @@ class _ApplyJobState extends State<ApplyJob> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Theme
+            .of(context)
+            .colorScheme
+            .inversePrimary,
         title: Text('Apply for Job'),
       ),
       body: Padding(
@@ -63,7 +66,7 @@ class _ApplyJobState extends State<ApplyJob> {
             ElevatedButton(
               onPressed: () {
                 // applyJob(widget.work.id, usernameController.text).then((_) {
-                  Navigator.pop(context);
+                Navigator.pop(context);
                 // });
               },
               style: ElevatedButton.styleFrom(

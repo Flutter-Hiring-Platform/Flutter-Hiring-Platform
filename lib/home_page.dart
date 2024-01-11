@@ -47,13 +47,22 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 const Text('Welcome to LinkedIn !',
                     style: TextStyle(fontSize: 24)),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const Login()));
-                  },
-                  child: const Text('Signin'),
-                ),
+                    ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                       MaterialPageRoute(builder: (context) => const Login())
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                    ),
+                    child: const Text(
+                      'Login',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                
               ],
             ),
             Row(
@@ -61,15 +70,22 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 const Text("Don't have an account yet ? sign up for free !",
                     style: TextStyle(fontSize: 24)),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(
+                    ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => const Signup()));
-                  },
-                  child: const Text('Signup'),
-                ),
+                       MaterialPageRoute(builder: (context) => const Signup())
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                    ),
+                    child: const Text(
+                      'Signup',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                
               ],
             ),
           ],

@@ -28,14 +28,18 @@ class _AddJobWidgetState extends State<AddJobWidget> {
       appBar: AppBar(
         leading: IconButton(
           icon: const BackButtonIcon(),
-         onPressed: () {
+          onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const MyHomePage(title: 'LinkedIn')),
+              MaterialPageRoute(
+                  builder: (context) => const MyHomePage(title: 'LinkedIn')),
             );
           },
         ),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Theme
+            .of(context)
+            .colorScheme
+            .inversePrimary,
         title: Center(child: Text(widget.title)),
       ),
       body: Padding(
@@ -115,9 +119,10 @@ class _AddJobWidgetState extends State<AddJobWidget> {
                     SizedBox(height: 16),
                     TextButton(
                       style: ButtonStyle(
-                        foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                        foregroundColor: MaterialStateProperty.all<Color>(
+                            Colors.blue),
                         overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                          (Set<MaterialState> states) {
+                              (Set<MaterialState> states) {
                             if (states.contains(MaterialState.hovered))
                               return Colors.blue.withOpacity(0.04);
                             if (states.contains(MaterialState.focused) ||
@@ -127,7 +132,7 @@ class _AddJobWidgetState extends State<AddJobWidget> {
                           },
                         ),
                       ),
-                       onPressed: () {
+                      onPressed: () {
                         setState(() {
                           _futureJob = createJob(
                             titleController.text,

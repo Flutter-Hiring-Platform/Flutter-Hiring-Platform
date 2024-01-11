@@ -5,7 +5,7 @@ import 'apply_job.widget.dart';
 
 class WorkDetailsWidget extends StatelessWidget {
   final Work work;
-  
+
 
   const WorkDetailsWidget({Key? key, required this.work}) : super(key: key);
 
@@ -14,7 +14,10 @@ class WorkDetailsWidget extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Job Details'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Theme
+            .of(context)
+            .colorScheme
+            .inversePrimary,
       ),
       body: Center(
         child: Padding(

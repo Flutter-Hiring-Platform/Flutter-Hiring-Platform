@@ -5,68 +5,105 @@ import 'joblist.dart';
 import 'user_api.dart';
 import 'user.dart';
 
-class PersonalDataWidget extends StatelessWidget {
-  const PersonalDataWidget({super.key, required this.username,
-    // required this.email
-    // required this.pwd
-    });
-  final String username;
-  // final String email;
-  // final String pwd;
+class PersonalDataWidget extends StatefulWidget {
+  const PersonalDataWidget({
+    Key? key,
+    required this.username,
+  }) : super(key: key);
 
+  final String username;
+
+  @override
+  _PersonalDataWidgetState createState() => _PersonalDataWidgetState();
+}
+
+class _PersonalDataWidgetState extends State<PersonalDataWidget> {
+  late Future<User> _userData;
+
+  @override
+  void initState() {
+    super.initState();
+    _userData = getUserByName(widget.username);
+  }
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-     return FutureBuilder<User>(
-      future: getUserByName(username),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator();
-        } else if (snapshot.hasError) {
-          return Text('Error: ${snapshot.error}');
-        } else {
-          final User user = snapshot.data!;
-          return Scaffold(
-            appBar: AppBar(
-              title: const Text('Personal Data'),
-              backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-              leading: const BackButton(),
-               actions: <Widget>[
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const JobWidget()));
-                  },
-                  child: const Text('Job List'),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Personal Data'),
+        backgroundColor: Theme
+            .of(context)
+            .colorScheme
+            .inversePrimary,
+        leading: const BackButton(),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const JobWidget(),
                 ),
-               ]
-            ),
-            body: Center(
-              child: Column(
+              );
+            },
+            child: const Text('Job List'),
+          ),
+        ],
+      ),
+      body: Center(
+        child: FutureBuilder<User>(
+          future: _userData,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator();
+            } else if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            } else {
+              final User user = snapshot.data!;
+              return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Username: $username'),
-                  Text('Email: ${user.email}'),
+                  Text(
+                    'Username: ${widget.username}',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(height: 12),
+                  Text(
+                    'Email: ${user.email}',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
                   // Add other details as needed
-                  TextButton(
+                  SizedBox(height: 20),
+                  ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const MyHomePage(title: 'LinkedIn')),
+                        MaterialPageRoute(
+                          builder: (context) =>
+                          const MyHomePage(title: 'LinkedIn'),
+                        ),
                       );
                     },
-                    child: const Text('Go to Home page'),
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(
+                          vertical: 15, horizontal: 30),
+                    ),
+                    child: const Text(
+                      'Go to Home page',
+                      style: TextStyle(fontSize: 16),
+                    ),
                   ),
                 ],
-              ),
-            ),
-          );
-        }
-      },
+              );
+            }
+          },
+        ),
+      ),
     );
   }
 }

@@ -23,14 +23,18 @@ class _SignupWidgetState extends State<SignupWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Theme
+            .of(context)
+            .colorScheme
+            .inversePrimary,
         title: Center(child: Text(widget.title)),
         leading: IconButton(
           icon: const BackButtonIcon(),
-         onPressed: () {
+          onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const MyHomePage(title: 'LinkedIn')),
+              MaterialPageRoute(
+                  builder: (context) => const MyHomePage(title: 'LinkedIn')),
             );
           },
         ),
@@ -81,9 +85,10 @@ class _SignupWidgetState extends State<SignupWidget> {
                     SizedBox(height: 16),
                     TextButton(
                       style: ButtonStyle(
-                        foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                        foregroundColor: MaterialStateProperty.all<Color>(
+                            Colors.blue),
                         overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                          (Set<MaterialState> states) {
+                              (Set<MaterialState> states) {
                             if (states.contains(MaterialState.hovered))
                               return Colors.blue.withOpacity(0.04);
                             if (states.contains(MaterialState.focused) ||
@@ -96,7 +101,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                       onPressed: () {
                         setState(() {
                           _futureUser =
-                              createUser(usernameController.text, passwordController.text, emailController.text, context);
+                              createUser(usernameController.text,
+                                  passwordController.text, emailController.text,
+                                  context);
                         });
                       },
                       child: Text('Create'),
